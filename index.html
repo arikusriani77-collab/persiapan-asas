@@ -56,6 +56,19 @@ small,.m{color:var(--m)}
 .o{display:flex;gap:10px;align-items:center;text-align:left;background:#160f40;color:var(--t);border:2px solid #4b3aa8;border-radius:12px;padding:12px;font:inherit;box-shadow:0 4px 0 #0d0828;cursor:pointer}
 .o b{background:#4b3aa8;border-radius:8px;width:28px;height:28px;display:grid;place-items:center;flex:none}
 .o.sel{border-color:var(--cy);background:rgba(41,224,200,.18)}
+.boss{border-color:var(--pk);box-shadow:0 8px 0 #4a0f2a,0 0 26px rgba(255,79,139,.5)}
+.certw{container-type:inline-size}
+.cert{position:relative;aspect-ratio:297/210;background:#120a2e;border:.8cqw solid var(--g);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5cqw;color:var(--t)}
+.cert:before{content:'';position:absolute;inset:1.6cqw;border:.2cqw solid var(--g);pointer-events:none}
+.c1{font:700 5cqw Georgia,serif;color:var(--g)}
+.c2{font-size:1.7cqw;margin:.6cqw 0 2.4cqw}
+.c3{font-size:1.8cqw;margin:.4cqw 0}
+.cn{font:italic 700 4cqw Georgia,serif;color:var(--cy);margin:.8cqw 0}
+.c4{font-size:1.4cqw;color:var(--m);margin:1.6cqw 0 2cqw;max-width:80%}
+.cr{display:flex;gap:10cqw;align-items:flex-end}
+.cr small{display:block;font-size:1.4cqw;color:var(--g)}
+.cr b{font:700 5cqw Georgia,serif;color:var(--g)}.cr .pd{font-size:3.6cqw;color:var(--cy)}
+.cf{position:absolute;left:5cqw;right:5cqw;bottom:3.2cqw;display:flex;justify-content:space-between;font-size:1.3cqw}
 .dot{width:12px;height:12px;border-radius:50%;display:inline-block;margin-right:6px}
 input[type=number]{width:100%;padding:10px;border-radius:10px;border:2px solid #4b3aa8;background:#160f40;color:var(--t);font:inherit}
 svg{width:100%;height:auto}
@@ -119,6 +132,23 @@ const Q=[
 {m:'m5',q:'1.000 bakteri menjadi dua kali lipat tiap jam. Setelah 3 jam jumlahnya …',o:['3.000','6.000','8.000','9.000'],a:2},
 {m:'m5',q:'Zat 80 gram meluruh separuhnya tiap 2 jam. Sisa setelah 6 jam …',o:['40 gram','20 gram','10 gram','5 gram'],a:2},
 {m:'m5',q:'Modal Rp2.000.000, majemuk 5% per tahun, setelah 2 tahun menjadi …',o:['Rp2.050.000','Rp2.100.000','Rp2.200.000','Rp2.205.000'],a:3}];
+// Bank soal BOSS: khusus simulasi, tidak dipakai di diagnostik dan kuis
+const QB=[
+{m:'m1',q:'Nilai (2<sup>−1</sup> · 4<sup>3/2</sup>) / 8<sup>1/3</sup> adalah …',o:['1','2','4','8'],a:1},
+{m:'m1',q:'Bentuk sederhana dari 4/(√7 − √3) adalah …',o:['√7 + √3','√7 − √3','4(√7 + √3)','(√7 + √3)/4'],a:0},
+{m:'m1',q:'Luas sebuah persegi 72 cm². Panjang diagonalnya adalah …',o:['6√2 cm','12 cm','12√2 cm','36 cm'],a:1},
+{m:'m2',q:'Jika <sup>2</sup>log 5 = p dan <sup>2</sup>log 3 = q, maka <sup>2</sup>log 45 = …',o:['p + 2q','2p + q','p + q + 2','2pq'],a:0},
+{m:'m2',q:'Nilai <sup>2</sup>log 48 − <sup>2</sup>log 3 + <sup>2</sup>log ¼ adalah …',o:['2','4','6','0'],a:0},
+{m:'m2',q:'pH = −log [H<sup>+</sup>]. Jika log 2 = 0,3, pH larutan dengan [H<sup>+</sup>] = 4 × 10<sup>−5</sup> adalah …',o:['4,4','5,6','4,6','3,4'],a:0},
+{m:'m3',q:'Jumlah semua penyelesaian 9<sup>x</sup> − 4·3<sup>x</sup> + 3 = 0 adalah …',o:['0','1','2','4'],a:1},
+{m:'m3',q:'Jumlah akar-akar persamaan 2<sup>x²−3x</sup> = 16 adalah …',o:['−3','3','4','−1'],a:1},
+{m:'m3',q:'Penyelesaian <sup>2</sup>log (x + 2) + <sup>2</sup>log (x − 1) = 2 adalah …',o:['−3','2','2 dan −3','3'],a:1},
+{m:'m4',q:'Tumpukan batang: baris pertama 20 batang, tiap baris berikutnya berkurang 2, sampai baris terakhir 2 batang. Jumlah seluruh batang adalah …',o:['100','110','120','210'],a:1},
+{m:'m4',q:'Bola dijatuhkan dari ketinggian 10 m dan memantul setinggi ¾ tinggi sebelumnya, terus sampai berhenti. Panjang seluruh lintasan bola adalah …',o:['40 m','60 m','70 m','80 m'],a:2},
+{m:'m4',q:'Tiga bilangan membentuk barisan aritmetika dengan jumlah 21 dan hasil kali 315. Bilangan terbesarnya adalah …',o:['7','9','11','15'],a:1},
+{m:'m5',q:'Modal Rp5.000.000 dengan bunga majemuk 12% per tahun, dihitung tiap semester. Saldo setelah 1 tahun adalah …',o:['Rp5.600.000','Rp5.618.000','Rp5.636.000','Rp5.720.000'],a:1},
+{m:'m5',q:'Zat radioaktif 160 gram memiliki waktu paruh 5 hari. Massa yang sudah meluruh setelah 15 hari adalah …',o:['20 gram','80 gram','140 gram','150 gram'],a:2},
+{m:'m5',q:'Tabungan A Rp1.000.000 berbunga tunggal 6% per tahun, tabungan B Rp1.000.000 berbunga majemuk 5% per tahun. Setelah 2 tahun, selisih saldo A dan B adalah …',o:['Rp10.000','Rp17.500','Rp20.000','Rp27.500'],a:1}];
 let D,U,prog={},S,T,POS=null;
 const BOT=`<svg viewBox="0 0 40 52"><line x1="20" y1="3" x2="20" y2="9" stroke="#ffc83d" stroke-width="2"/><circle cx="20" cy="3" r="3" fill="#ff4f8b"/><rect x="8" y="9" width="24" height="18" rx="6" fill="#29e0c8"/><rect class="ey" x="13" y="14" width="4" height="7" rx="2" fill="#120a2e"/><rect class="ey" x="23" y="14" width="4" height="7" rx="2" fill="#120a2e"/><rect x="11" y="29" width="18" height="12" rx="4" fill="#ffc83d"/><circle cx="20" cy="35" r="2.5" fill="#ff4f8b"/><rect x="4" y="30" width="5" height="9" rx="2.5" fill="#29e0c8"/><rect x="31" y="30" width="5" height="9" rx="2.5" fill="#29e0c8"/><rect class="lg l1" x="12" y="41" width="5" height="9" rx="2" fill="#29e0c8"/><rect class="lg l2" x="23" y="41" width="5" height="9" rx="2" fill="#29e0c8"/></svg>`;
 const bpos=k=>{const n=document.querySelector('[data-k="'+k+'"]');return[n.offsetLeft+n.offsetWidth/2-20,n.offsetTop-40]};
@@ -152,7 +182,7 @@ function home(){clearInterval(T);const pass=ORD.filter(lulus).length,xp=ORD.redu
  <div class=map><div class=bot>${BOT}</div>${ORD.map((k,i)=>{const L=k=='diag'?'?':k=='sim'?'★':i,s=prog[k]!=null?(k=='diag'?'✓':'★'.repeat(star(prog[k]))+'☆'.repeat(3-star(prog[k]))):unl(k)?'Buka':'🔒';
  return `<button data-k="${k}" class="node ${unl(k)?'':'lock'} ${lulus(k)?'done':''}" ${unl(k)?'':'disabled'} onclick="go('${k}')"><div class=sc><div class=cube>${`<i>${L}</i>`.repeat(6)}</div></div><b>${k=='diag'?'Level 0':k=='sim'?'BOSS':'Level '+i}</b><small>${NAMA[k]}</small><span class=st>${s}</span></button>`}).join('')}</div>
  <div style="max-width:1000px;margin:auto">${prog.peta?`<small>Peta kemampuan: ${ORD.slice(1,6).map(m=>`<span class=dot style="background:${prog.peta[m]==null?'#4b3aa8':c(prog.peta[m])}"></span>${m.slice(1)}`).join(' &nbsp; ')} (hijau kuat, kuning cukup, merah perlu latihan)</small>`:''}
- ${nx?`<button class=btn onclick="go('${nx}')">▶ Lanjut: ${NAMA[nx]}</button>`:''}${prog.sim!=null?'<button class="btn cy" onclick=cert()>🏆 Unduh sertifikat (PDF)</button>':''}</div>`;placeBot(nx||'sim')}
+ ${nx?`<button class=btn onclick="go('${nx}')">▶ Lanjut: ${NAMA[nx]}</button>`:''}${prog.sim!=null?'<button class="btn cy" onclick=lihatCert()>🏆 Lihat sertifikat</button>':''}</div>`;placeBot(nx||'sim')}
 function go(k){k=='diag'||k=='sim'?quiz(k):mod(k)}
 function mod(k){const d=MOD[k];UI.innerHTML=`<div class=panel><button class="btn sm" onclick=home()>← Peta</button><h2>${NAMA[k]}</h2><h3>Jurus rumus</h3>${d.rum.map(r=>`<div class=rum>${r}</div>`).join('')}<h3>Contoh soal</h3><div class=rum>${d.ex}</div>${k=='m5'?`<h3>Lab maya: tunggal vs majemuk</h3><label>Modal (Rp)<input id=lm type=number value=1000000 oninput=lab()></label><label>Bunga per tahun (%)<input id=li type=number value=8 oninput=lab()></label><label>Lama (tahun)<input id=ln type=number value=10 min=1 max=40 oninput=lab()></label><div id=lr></div>`:''}<button class=btn onclick="quiz('${k}')">⚔ Mulai level (${Q.filter(x=>x.m==k).length} soal)</button></div>`;if(k=='m5')lab()}
 function lab(){const M=+$('#lm').value,i=+$('#li').value/100,n=Math.min(40,Math.max(1,Math.round(+$('#ln').value)));if(!(M>0))return;
@@ -160,10 +190,10 @@ function lab(){const M=+$('#lm').value,i=+$('#li').value/100,n=Math.min(40,Math.
  const mx=Math.max(...a,...b),P=(v,t)=>(10+t*320/n).toFixed(1)+','+(110-v/mx*100).toFixed(1),f=v=>Math.round(v).toLocaleString('id-ID');
  $('#lr').innerHTML=`<svg viewBox="0 0 340 120"><polyline fill="none" stroke="#2ee59d" stroke-width="2.5" points="${a.map((v,t)=>P(v,t)).join(' ')}"/><polyline fill="none" stroke="#ffc83d" stroke-width="2.5" points="${b.map((v,t)=>P(v,t)).join(' ')}"/></svg><p><span class=dot style="background:#2ee59d"></span>Tunggal: <b>Rp${f(a[n])}</b><br><span class=dot style="background:#ffc83d"></span>Majemuk: <b>Rp${f(b[n])}</b></p>`}
 function quiz(k){const per=n=>ORD.slice(1,6).flatMap(m=>sh(Q.filter(x=>x.m==m)).slice(0,n));
- const qs=k=='diag'?per(2):k=='sim'?sh(per(3)):sh(Q.filter(x=>x.m==k));
- S={k,i:0,a:[],t:k=='sim'?1500:0,qs:qs.map(x=>({...x,o:sh(x.o.map((t,i)=>({t,c:i==x.a})))}))};
+ const qs=k=='diag'?per(2):k=='sim'?sh(QB):sh(Q.filter(x=>x.m==k));
+ S={k,i:0,a:[],t:k=='sim'?1800:0,qs:qs.map(x=>({...x,o:sh(x.o.map((t,i)=>({t,c:i==x.a})))}))};
  clearInterval(T);if(S.t)T=setInterval(()=>{S.t--;const e=$('#tm');if(e)e.textContent=fmt(S.t);if(S.t<=0)fin()},1000);q()}
-function q(){const x=S.qs[S.i];UI.innerHTML=`<div class=panel><div class=row><b>${S.k=='sim'?'BOSS':'LEVEL'} · ${NAMA[S.k]}</b><span id=tm class=m>${S.t?fmt(S.t):''}</span></div><div class=road><div class=bot2>${BOT}</div><span class=fl>🏁</span></div><small>Soal ${S.i+1} dari ${S.qs.length}</small><p class=qq>${x.q}</p><div class=opts>${x.o.map((o,j)=>`<button class=o onclick=pick(${j})><b>${'ABCD'[j]}</b>${o.t}</button>`).join('')}</div><button class=btn id=nx disabled onclick=nxt()>${S.i+1==S.qs.length?'Selesai':'Lanjut'}</button></div>`;moveBot()}
+function q(){const x=S.qs[S.i];UI.innerHTML=`<div class="panel ${S.k=='sim'?'boss':''}"><div class=row><b>${S.k=='sim'?'👾 BOSS':'LEVEL'} · ${NAMA[S.k]}</b><span id=tm class=m>${S.t?fmt(S.t):''}</span></div>${S.k=='sim'?'<small style="color:var(--pk)">Soal tingkat tinggi: soal cerita dan penalaran. Berbeda dari diagnostik dan kuis.</small>':''}<div class=road><div class=bot2>${BOT}</div><span class=fl>🏁</span></div><small>Soal ${S.i+1} dari ${S.qs.length}</small><p class=qq>${x.q}</p><div class=opts>${x.o.map((o,j)=>`<button class=o onclick=pick(${j})><b>${'ABCD'[j]}</b>${o.t}</button>`).join('')}</div><button class=btn id=nx disabled onclick=nxt()>${S.i+1==S.qs.length?'Selesai':'Lanjut'}</button></div>`;moveBot()}
 function pick(j){S.a[S.i]=j;document.querySelectorAll('.o').forEach((b,n)=>b.classList.toggle('sel',n==j));$('#nx').disabled=false}
 function nxt(){if(S.i<S.qs.length-1){S.i++;q()}else fin()}
 function fin(){clearInterval(T);let c=0;const pm={},w=[],k=S.k;
@@ -172,7 +202,10 @@ function fin(){clearInterval(T);let c=0;const pm={},w=[],k=S.k;
  if(k=='diag'||k=='sim'){prog.peta={};for(const m in pm)prog.peta[m]=pm[m][0]/pm[m][1]}
  if(k=='sim'){const v=fa();if(v!=null){prog.akhir=v;prog.pred=pd(v)}}
  prog.last=k;save();const ok=sc>=7||k=='diag',n=star(sc);
- UI.innerHTML=`<div class=panel><div class=ctr style="min-height:0"><div class="bot0 ${ok?'jump':'sad'}">${BOT}</div><div class=big>${sc} / 10</div><div class=st style="font-size:2rem">${'★'.repeat(n)+'☆'.repeat(3-n)}</div><p>${ok?(k=='sim'?'Boss dikalahkan! Sertifikatmu siap diunduh.':'Level selesai! Level berikutnya terbuka.'):'Belum mencapai 7. Baca lagi jurus rumusnya, lalu coba lagi.'}</p></div>${w.length?'<h3>Soal yang perlu dihitung ulang</h3>'+w.map(x=>`<div class=rum>${x.q}</div>`).join('')+'<small>Jawaban benar tidak ditampilkan. Hitung ulang dengan caramu sendiri, lalu coba lagi.</small>':''}${k=='sim'&&prog.akhir!=null?'<button class="btn cy" onclick=cert()>🏆 Unduh sertifikat (PDF)</button>':''}${ok?'':`<button class=btn onclick="quiz('${k}')">↻ Coba lagi level ini</button>`}<button class="btn ${ok?'':'cy'}" onclick=home()>Kembali ke peta</button></div>`}
+ UI.innerHTML=`<div class=panel><div class=ctr style="min-height:0"><div class="bot0 ${ok?'jump':'sad'}">${BOT}</div><div class=big>${sc} / 10</div><div class=st style="font-size:2rem">${'★'.repeat(n)+'☆'.repeat(3-n)}</div><p>${ok?(k=='sim'?'Boss dikalahkan! Sertifikatmu siap dilihat dan diunduh.':'Level selesai! Level berikutnya terbuka.'):'Belum mencapai 7. Baca lagi jurus rumusnya, lalu coba lagi.'}</p></div>${w.length?'<h3>Soal yang perlu dihitung ulang</h3>'+w.map(x=>`<div class=rum>${x.q}</div>`).join('')+'<small>Jawaban benar tidak ditampilkan. Hitung ulang dengan caramu sendiri, lalu coba lagi.</small>':''}${k=='sim'&&prog.akhir!=null?'<button class="btn cy" onclick=lihatCert()>🏆 Lihat sertifikat</button>':''}${ok?'':`<button class=btn onclick="quiz('${k}')">↻ Coba lagi level ini</button>`}<button class="btn ${ok?'':'cy'}" onclick=home()>Kembali ke peta</button></div>`}
+function lihatCert(){const v=fa();if(v==null){alert('Selesaikan semua level dan Boss dulu.');return}
+ const tgl=new Date().toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'});
+ UI.innerHTML=`<div class=panel style="max-width:760px"><div class=row><button class="btn sm" onclick=home()>← Peta</button><b>Pratinjau sertifikat</b></div><div class=certw style="margin-top:10px"><div class=cert><div class=c1>SERTIFIKAT</div><div class=c2>Math Quest - Petualangan Persiapan ASAS Matematika</div><div class=c3>diberikan kepada</div><div class=cn>${esc(U.nama)}</div><div class=c3>Kelas ${esc(U.kelas)}</div><div class=c4>telah menamatkan seluruh level: bilangan berpangkat, bentuk akar, logaritma, persamaan eksponen dan logaritma, barisan dan deret, bunga, serta pertumbuhan dan peluruhan.</div><div class=cr><div><small>NILAI AKHIR</small><b>${v}</b></div><div><small>PREDIKAT</small><b class=pd>${pd(v).toUpperCase()}</b></div></div><div class=cf><span>${tgl}</span><span>Guru Matematika</span></div></div></div><button class="btn cy" onclick=cert()>⬇ Unduh PDF</button></div>`}
 function cert(){const v=fa();if(v==null){alert('Selesaikan semua level dan Boss dulu.');return}
  if(!window.jspdf){alert('Pustaka PDF belum termuat. Periksa sinyal lalu coba lagi.');return}
  prog.akhir=v;prog.pred=pd(v);save();
